@@ -731,6 +731,21 @@
         "invalid_lnurl": "Invalid LNURL"
       }
     },
+    "cashumelt": {
+      "title": "Melt Cashu Tokens",
+      "input": {
+        "label": "Cashu Token",
+        "placeholder": "cashuA..."
+      },
+      "actions": {
+        "melt": "Melt"
+      },
+      "errors": {
+        "invalid_cashu_token": "Invalid Cashu Token",
+        "invalid_melt": "Invalid Melt"
+      },
+      "success": "Melt request sent successfully"
+    },
     "receive": {
       "title": "Receive",
       "actions": {
@@ -746,6 +761,10 @@
         "redeem": {
           "title": "Redeem",
           "description": "Withdraw a bitcoin voucher instantly via an LNURL code"
+        },
+        "cashumelt": {
+          "title": "Melt Cashu Tokens",
+          "description": "Melt Cashu Tokens to receive via Lightning"
         }
       },
       "amount": {

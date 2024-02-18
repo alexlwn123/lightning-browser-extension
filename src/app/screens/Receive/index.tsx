@@ -146,6 +146,14 @@ function Receive() {
                 navigate("/lnurlRedeem");
               }}
             />
+            <IconLinkCard
+              title={t("actions.cashumelt.title")}
+              description={t("actions.cashumelt.description")}
+              icon={<RedeemIcon className="w-8" />}
+              onClick={() => {
+                navigate("/cashuMelt");
+              }}
+            />
           </div>
         </Container>
       </div>
