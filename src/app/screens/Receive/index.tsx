@@ -151,7 +151,7 @@ function Receive() {
               description={t("actions.cashumelt.description")}
               icon={<RedeemIcon className="w-8" />}
               onClick={() => {
-                navigate("/cashuMelt");
+                navigate("/ecashMelt");
               }}
             />
           </div>

@@ -32,7 +32,8 @@ import NewMnemonic from "~/app/screens/Accounts/GenerateMnemonic/new";
 import ImportMnemonic from "~/app/screens/Accounts/ImportMnemonic";
 import NostrSettings from "~/app/screens/Accounts/NostrSettings";
 import NostrSetup from "~/app/screens/Accounts/NostrSetup/NostrSetup";
-import CashuMelt from "~/app/screens/CashuMelt";
+import ConfirmMelt from "~/app/screens/ConfirmMelt";
+import EcashMelt from "~/app/screens/EcashMelt";
 
 import LNURLRedeem from "~/app/screens/LNURLRedeem";
 import OnChainReceive from "~/app/screens/OnChainReceive";
@@ -66,6 +67,7 @@ function Options() {
             </Route>
             <Route path="send" element={<Send />} />
             <Route path="confirmPayment" element={<ConfirmPayment />} />
+            <Route path="confirmMelt" element={<ConfirmMelt />} />
             <Route path="keysend" element={<Keysend />} />
             <Route
               path="sendToBitcoinAddress"
@@ -80,7 +82,7 @@ function Options() {
             <Route path="lnurlChannel" element={<LNURLChannel />} />
             <Route path="lnurlWithdraw" element={<LNURLWithdraw />} />
             <Route path="lnurlRedeem" element={<LNURLRedeem />} />
-            <Route path="cashuMelt" element={<CashuMelt />} />
+            <Route path="ecashMelt" element={<EcashMelt />} />
             <Route path="lnurlAuth" element={<LNURLAuth />} />
             <Route path="settings" element={<Settings />} />
             <Route path="scanQRCode" element={<ScanQRCode />} />

@@ -9,9 +9,13 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import QrcodeAdornment from "~/app/components/QrcodeAdornment";
 import toast from "~/app/components/Toast";
-import { cashuMeltTokens, getDecodedToken } from "~/common/lib/cashu";
+import {
+  decodeCashuTokens,
+  getMeltQuotes,
+  validateCashuTokens,
+} from "~/common/lib/ecash";
 
-function CashuMelt() {
+function EcashMelt() {
   const { t } = useTranslation("translation", { keyPrefix: "cashumelt" });
   const location = useLocation();
   const [cashuToken, setCashuToken] = useState(location.state?.decodedQR || "");
@@ -22,18 +26,31 @@ function CashuMelt() {
     event.preventDefault();
     setLoading(true);
 
+    // TODO: Get melt summary/quote... without executing
     try {
+      // TODO, try to decode both cashu & fedimint
+
       // Decode the token to ensure it's valid before attempting to melt
-      const decodedToken = getDecodedToken(cashuToken);
-      if (!decodedToken) {
+      // const decodedToken = getDecodedToken(cashuToken);
+      const ecash = validateCashuTokens(cashuToken);
+      if (!ecash) {
+        toast.error(t("errors.invalid_cashu_token"));
+        return;
+      }
+      const tokens = decodeCashuTokens(ecash);
+      const quotes = await getMeltQuotes(tokens);
+      if (!quotes) {
         toast.error(t("errors.invalid_cashu_token"));
         return;
       }
 
-      // Attempt to melt the cashu tokens
-      const totalMelted = await cashuMeltTokens(decodedToken);
-      toast.success(`${t("success")} ${totalMelted} sats`);
-      navigate("/success");
+      navigate("/confirmMelt", {
+        state: {
+          args: {
+            ecashMeltSummary: quotes,
+          },
+        },
+      });
     } catch (error) {
       console.error(error);
       toast.error(t("errors.invalid_melt"));
@@ -86,4 +103,4 @@ function CashuMelt() {
   );
 }
 
-export default CashuMelt;
+export default EcashMelt;

@@ -2,6 +2,7 @@ import { CreateSwapParams } from "@getalby/sdk/dist/types";
 import { PaymentRequestObject } from "bolt11";
 import { Runtime } from "webextension-polyfill";
 import { ACCOUNT_CURRENCIES, CURRENCIES } from "~/common/constants";
+import { MeltSummary } from "~/common/lib/ecash";
 import connectors from "~/extension/background-script/connectors";
 import {
   ConnectorTransaction,
@@ -158,6 +159,7 @@ export type NavigationState = {
     memoEditable?: boolean;
     invoiceAttributes?: RequestInvoiceArgs;
     paymentRequest?: string;
+    ecashMeltSummary?: MeltSummary;
     destination?: string;
     amount?: string;
     customRecords?: Record<string, string>;
